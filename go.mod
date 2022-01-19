@@ -5,7 +5,9 @@ go 1.17
 require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/joho/godotenv v1.4.0
-	go.mongodb.org/mongo-driver v1.8.2
+	gorm.io/driver/mysql v1.2.3
+	gorm.io/gorm v1.22.5
+
 )
 
 require (
@@ -37,5 +39,4 @@ require (
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gorm.io/gorm v1.22.5 // indirect
 )

@@ -1,10 +1,11 @@
 package models
 
-import "time"
-
 type Todo struct {
 	ID     int64     `json:"id" gorm:"primaryKey;AUTO_INCREMENT"`
-	Tasks  string    `json:"tasks"`
+	Task  string    `json:"task"`
 	IsDone bool      `json:"isDone"`
-	at     time.Time `json:"at"`
+}
+
+func (todo *Todo) name() string {
+	return "todo"
 }

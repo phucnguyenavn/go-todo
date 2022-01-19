@@ -1,43 +1,31 @@
 package main
 
 import (
-	"context"
-	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/mongo/readpref"
-	"log"
+	"go-todo/main/api/controller"
+	"go-todo/main/api/repository"
+	"go-todo/main/api/routes"
+	"go-todo/main/api/service"
+	"go-todo/main/infratructure"
+	"go-todo/main/models"
 	"os"
 )
 
-var ctx context.Context
 
-var err error
-
-var client *mongo.Client
 
 func init() {
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatalf("Error loading .env file")
-	}
-	ctx = context.Background()
-	client, err = mongo.Connect(ctx, options.Client().ApplyURI(os.Getenv("MONGO_URI")))
-	if err = client.Ping(context.TODO(),
+	infratructure.LoadEnv()
 
-		readpref.Primary()); err != nil {
-
-		log.Fatal(err)
-
-	}
-
-	log.Println("Connected to MongoDB")
 }
 
 func main() {
-	router := gin.Default()
-	router.POST("/new-user")
+	router := infratructure.NewGinRouter()
+	db := infratructure.NewDatabase()
+	userRepo := repository.NewUserRepository(db)
+	userService := service.NewUserService(userRepo)
+	userController := controller.NewUserController(userService)
+	userRoute := routes.NewUserRoute(userController,router)
+	userRoute.Setup()
+	db.DB.AutoMigrate(&models.User{})
+	router.Gin.Run(os.Getenv("SERVER_PORT"))
 
-	router.Run()
 }
