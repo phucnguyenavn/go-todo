@@ -2,9 +2,9 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"go-todo/main/api/service"
-	"go-todo/main/models"
-	"go-todo/main/util"
+	"go-todo/api/service"
+	"go-todo/models"
+	"go-todo/util"
 	"net/http"
 )
 
@@ -15,8 +15,6 @@ type UserController struct {
 func NewUserController(userService service.UserService) UserController {
 	return UserController{userService: userService}
 }
-
-
 
 func (u *UserController) NewUser(c *gin.Context) {
 	var user models.User

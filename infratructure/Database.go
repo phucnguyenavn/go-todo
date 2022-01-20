@@ -16,11 +16,11 @@ type Database struct {
 //NewDatabase : initializes and returns mysql db
 func NewDatabase() Database {
 	USER := os.Getenv("DB_USER")
-	PASS := os.Getenv("DB_PASSWORD")
+	PASS := os.Getenv("MYSQL_ROOT_PASSWORD")
 	HOST := os.Getenv("DB_HOST")
 	DBNAME := os.Getenv("DB_NAME")
 
-	URL := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local", USER, PASS,
+	URL := fmt.Sprintf("%s:%s@tcp(%s)/%s", USER, PASS,
 		HOST, DBNAME)
 	fmt.Println(URL)
 	db, err := gorm.Open(mysql.Open(URL))

@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"go-todo/main/infratructure"
-	"go-todo/main/models"
+	"go-todo/infratructure"
+	"go-todo/models"
 )
 
 type UserRepository struct {
@@ -13,6 +13,6 @@ func NewUserRepository(db infratructure.Database) UserRepository {
 	return UserRepository{db: db}
 }
 
-func (u UserRepository) NewUser(user models.User) error{
+func (u UserRepository) NewUser(user models.User) error {
 	return u.db.DB.Create(&user).Error
 }

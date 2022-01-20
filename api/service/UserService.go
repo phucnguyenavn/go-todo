@@ -1,8 +1,8 @@
 package service
 
 import (
-	"go-todo/main/api/repository"
-	"go-todo/main/models"
+	"go-todo/api/repository"
+	"go-todo/models"
 )
 
 type UserService struct {

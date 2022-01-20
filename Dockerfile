@@ -1,15 +1,18 @@
-FROM golang:${GO_VERSION}
+FROM golang:1.17-alpine
 
-WORKDIR /go-todo/main
+RUN mkdir /app
+WORKDIR /app
 
-COPY go.mod ./
-COPY go.sum ./
+COPY go.mod .
+COPY go.sum .
 RUN go mod download
 
-COPY *.go ./
+COPY . .
 
-RUN go build -o /go-todo/main
+RUN go build -o /todo
 
 EXPOSE 8080
 
-CMD [ "/go-todo/main" ]
+CMD [ "/todo" ]
+
+
