@@ -1,15 +1,15 @@
 package repository
 
 import (
-	"go-todo/infratructure"
+	"go-todo/infrastructure"
 	"go-todo/models"
 )
 
 type UserRepository struct {
-	db infratructure.Database
+	db infrastructure.Database
 }
 
-func NewUserRepository(db infratructure.Database) UserRepository {
+func NewUserRepository(db infrastructure.Database) UserRepository {
 	return UserRepository{db: db}
 }
 

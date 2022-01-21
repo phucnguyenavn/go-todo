@@ -1,4 +1,4 @@
-package infratructure
+package infrastructure
 
 import (
 	"fmt"
@@ -30,10 +30,10 @@ func NewDatabase() Database {
 
 	}
 	fmt.Println("Database connection established")
+
 	return Database{
 		DB: db,
 	}
-
 }
 func LoadEnv() {
 	err := godotenv.Load(".env")

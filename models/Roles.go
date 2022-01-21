@@ -1,11 +1,7 @@
 package models
 
 /*type Roles struct {
-	ID    int64 `gorm:"primaryKey"`
-	Name  string `json:"name"`
+	ID    int64   `gorm:"primaryKey"`
+	Name  string  `json:"name"`
 	Users []*User `gorm:"many2many:user_roles;"`
-}
-
-func (roles *Roles) name() string  {
-	return "roles"
 }*/

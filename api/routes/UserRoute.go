@@ -2,15 +2,15 @@ package routes
 
 import (
 	"go-todo/api/controller"
-	"go-todo/infratructure"
+	"go-todo/infrastructure"
 )
 
 type UserRoute struct {
 	UserController controller.UserController
-	Router         infratructure.Router
+	Router         infrastructure.Router
 }
 
-func NewUserRoute(userController controller.UserController, router infratructure.Router) UserRoute {
+func NewUserRoute(userController controller.UserController, router infrastructure.Router) UserRoute {
 	return UserRoute{UserController: userController, Router: router}
 }
 
